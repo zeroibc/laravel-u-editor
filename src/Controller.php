@@ -43,7 +43,7 @@ class Controller extends BaseController
                     "pathFormat" => $config['scrawlPathFormat'],
                     "maxSize" => $config['scrawlMaxSize'],
                     //   "allowFiles" => $config['scrawlAllowFiles'],
-                    "oriName" => "scrawl.png",
+                    "oriName" => "scrawl.txt",
                     'fieldName' => $config['scrawlFieldName'],
                 );
                 $result = with(new UploadScrawl($upConfig, $request))->upload();
@@ -87,7 +87,13 @@ class Controller extends BaseController
                         $config['imageManagerListSize'],
                         $config['imageManagerListPath'],
                         $request))->getList();
-                }
+                } else if (config('UEditorUpload.core.mode') == 'oss') {
+					$result = with(new ListsOSS(
+						$config['imageManagerAllowFiles'],
+						$config['imageManagerListSize'],
+						$config['imageManagerListPath'],
+						$request))->getList();
+				}
 
 
                 break;
@@ -105,7 +111,13 @@ class Controller extends BaseController
                         $config['fileManagerListSize'],
                         $config['fileManagerListPath'],
                         $request))->getList();
-                }
+                } else if (config('UEditorUpload.core.mode') == 'oss') {
+					$result = with(new ListsOSS(
+						$config['fileManagerAllowFiles'],
+						$config['fileManagerListSize'],
+						$config['fileManagerListPath'],
+						$request))->getList();
+				}
 
                 break;
 

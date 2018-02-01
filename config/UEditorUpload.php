@@ -21,7 +21,7 @@ return [
            // 'middleware' => 'auth',
         ],
 
-        'mode'=>'local',//上传方式,local 为本地   qiniu 为七牛
+        'mode'=>'local',//上传方式,local 为本地   qiniu 为七牛  oss 为aliyun
 
         //七牛配置,若mode='qiniu',以下为必填.
         'qiniu'=>[
@@ -30,7 +30,14 @@ return [
             'bucket'=>'',
             'url'=>'http://xxx.clouddn.com',//七牛分配的CDN域名,注意带上http://
 
-        ]
+        ],
+		'oss'   => [
+			'accessKey' => '',
+			'secretKey' => '',
+			'bucket'    => '',
+			'endpoint'    => '',
+			'url'       => '',
+		]
     ],
     /**
      * 和原 UEditor /php/config.json 配置完全相同

@@ -1,5 +1,11 @@
 {
-  "name": "stevenyangecho/laravel-u-editor",
+  "name": "zeroibc/laravel-u-editor",
+  "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/zeroibc/laravel-u-editor"
+        }
+    ],
   "description": "UEditor for laravel5. Support i18n. UEditor is a Rich Text Web Editor From Baidu.",
   "keywords": [
     "laravel",
@@ -7,7 +13,9 @@
     "laravel-u-editor",
     "laravel5 web text editor",
     "stevenyangecho",
-    "steven yang"
+    "steven yang",
+	"zeroibc",
+	"OSS"
   ],
   "license": "MIT",
   "authors": [
@@ -21,7 +29,8 @@
     "php": ">=5.4.0",
     "ext-fileinfo": "*",
     "illuminate/support": "5.*",
-    "qiniu/php-sdk": "7.*"
+    "qiniu/php-sdk": "7.*",
+	"aliyuncs/oss-sdk-php": "^2.3"
   },
   "autoload": {
     "psr-4": {

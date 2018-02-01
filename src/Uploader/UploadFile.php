@@ -13,9 +13,25 @@ use Stevenyangecho\UEditor\Uploader\Upload;
  */
 class UploadFile  extends Upload{
     use UploadQiniu;
+    use UploadOSS;
+
+	/**
+	 * 获取文件路径
+	 * @return string
+	 */
+	protected function getFilePath()
+	{
+		$fullName = $this->fullName;
+
+
+		$fullName = ltrim($fullName, '/');
+
+
+		return $fullName;
+	}
+
     public function doUpload()
     {
-
 
         $file = $this->request->file($this->fileField);
         if (empty($file)) {
@@ -70,7 +86,12 @@ class UploadFile  extends Upload{
             $content=file_get_contents($this->file->getPathname());
             return $this->uploadQiniu($this->filePath,$content);
 
-        }else{
+        }else if(config('UEditorUpload.core.mode')=='oss'){
+
+			$content=file_get_contents($this->file->getPathname());
+			return $this->uploadOSS($this->filePath,$content);
+
+		}else{
             $this->stateInfo = $this->getStateInfo("ERROR_UNKNOWN_MODE");
             return false;
         }

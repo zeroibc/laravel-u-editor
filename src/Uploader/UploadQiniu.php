@@ -14,20 +14,6 @@ use \Qiniu\Auth;
  */
 trait UploadQiniu
 {
-    /**
-     * 获取文件路径
-     * @return string
-     */
-    protected function getFilePath()
-    {
-        $fullName = $this->fullName;
-
-
-        $fullName = ltrim($fullName, '/');
-
-
-        return $fullName;
-    }
 
     public function uploadQiniu($key, $content)
     {
