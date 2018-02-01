@@ -23,21 +23,11 @@ class ListsOSS
 	{
 		$size  = $this->request->get('size', $this->listSize);
 		$start = $this->request->get('start', '');
-		$action       = $this->request->get('action');
 
 		$accessKeyId  = config('UEditorUpload.core.oss.accessKey');
 		$accessSecret = config('UEditorUpload.core.oss.secretKey');
 		$endpoint     = config('UEditorUpload.core.oss.endpoint');
 		$bucket       = config('UEditorUpload.core.oss.bucket');
-
-		if ($action == 'listfile')
-		{
-			$prefix = config('UEditorUpload.upload.fileManagerUrlPrefix');
-		}
-		elseif ($action == 'listimage')
-		{
-			$prefix = config('UEditorUpload.upload.imageManagerUrlPrefix');
-		}
 
 		try
 		{
@@ -45,7 +35,7 @@ class ListsOSS
 
 			$options = [
 				'delimiter' => '',
-				'prefix'    => $prefix,
+				'prefix'    => $this->path,
 				'max-keys'  => $size,
 				'marker'    => $start,
 			];
