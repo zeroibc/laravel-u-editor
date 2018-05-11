@@ -37,6 +37,13 @@
       "Stevenyangecho\\UEditor\\": "src/"
     }
   },
+  "extra": {
+        "laravel": {
+            "providers": [
+                "Stevenyangecho\\UEditor\\UEditorServiceProvider"
+            ]
+        }
+    },	
   "minimum-stability": "dev",
   "prefer-stable": true
 }
